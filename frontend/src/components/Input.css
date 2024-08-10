@@ -10,12 +10,13 @@ input{
     height: 40px;
     width: 170px;
     place-content: center;
+    border: none;
     -webkit-transition: 0.25s;
     transition: 0.25s;
     outline: none;
 }
 input:focus{
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 #input{

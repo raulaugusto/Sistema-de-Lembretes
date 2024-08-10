@@ -1,10 +1,9 @@
-// src/components/Form.js
 import React, { useState } from 'react';
-import { criarLembrete, obterLembretes } from '../services/Lembretes';
+import { criarLembrete } from '../services/Lembretes';
 import Input from '../components/Input';
-import axios from 'axios';
+import './Form.css';
 
-export default function Form() {
+export default function Form({ fetchLembretes }) {
     const [nome, setNome] = useState('');
     const [data, setData] = useState('');
 
@@ -19,21 +18,11 @@ export default function Form() {
             alert('Lembrete criado com sucesso!');
             setNome('');
             setData('');
+            fetchLembretes(); // Atualiza a lista de lembretes
         } catch (error) {
             alert(error.message);
         }
     };
-
-    const ReceberLembretes = async () => {
-        try{
-            var lembretes = await obterLembretes();
-            console.log(lembretes)
-        }
-        catch(error){
-            alert(error.message);
-        }
-    }
-
 
     return (
         <div>
@@ -53,7 +42,6 @@ export default function Form() {
                 onChange={(e) => setData(e.target.value)}
             />
             <button id='create' onClick={CriaLembrete}>Criar</button>
-            <button onClick={ReceberLembretes}>Resgatar</button>
         </div>
     );
 }

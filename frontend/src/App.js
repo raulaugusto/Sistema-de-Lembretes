@@ -1,28 +1,37 @@
-import React, { useEffect } from 'react';
+// src/App.js
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import Header from '../src/components/Header'
-import Form from '../src/components/Form'
+import Header from '../src/components/Header';
+import Form from '../src/components/Form';
 import ReminderList from './components/ReminderList';
-import '../src/services/Lembretes'
+import { obterLembretes } from '../src/services/Lembretes';
 
 function App() {
+  const [lembretes, setLembretes] = useState({});
+
+  const fetchLembretes = async () => {
+    try {
+      const lembretesData = await obterLembretes();
+      setLembretes(lembretesData);
+    } catch (error) {
+      console.error('Erro ao obter lembretes:', error);
+    }
+  };
+
   useEffect(() => {
-    fetch('http://localhost:5000')
-      .then(response => console.log(response.text()));
-    
+    fetchLembretes();
   }, []);
+
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <main>
         <div className='formSide'>
-          <Form/>
+          <Form fetchLembretes={fetchLembretes} /> {/* Passa fetchLembretes como prop */}
         </div>
         <div className='remindersSide'>
-          <ReminderList>
-            <h2>Lista de Lembretes</h2> 
-          </ReminderList>
+          <ReminderList lembretes={lembretes} setLembretes={setLembretes} />
         </div>
       </main>
     </div>
