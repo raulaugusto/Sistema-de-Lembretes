@@ -1,0 +1,10 @@
+.box{
+    display:flex;
+    place-content: center;
+    width: 700px;
+    height: 800px;
+    border: 2px solid black;
+}
+.list{
+    width: 600px;
+}

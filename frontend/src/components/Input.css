@@ -1,0 +1,26 @@
+label{
+    width: 80px;
+    height: 41px;
+    place-content: center;
+    display: inline-block; 
+    border-right: 1px solid black;
+
+}
+input{
+    height: 40px;
+    width: 170px;
+    place-content: center;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
+    outline: none;
+}
+input:focus{
+    border: 2px solid black;
+}
+
+#input{
+    margin-bottom: 10px;
+    padding: 0;
+    border: 1px solid black;
+    place-content: center;
+}
