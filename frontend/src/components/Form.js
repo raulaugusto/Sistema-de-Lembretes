@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { criarLembrete } from '../services/Lembretes';
+import { registraLembrete } from '../services/Lembretes';
 import Input from '../components/Input';
-import './Form.css';
+import '../styles/Form.module.scss';
 
 export default function Form({ fetchLembretes }) {
     const [nome, setNome] = useState('');
     const [data, setData] = useState('');
+    const [loading, setLoading] = useState(false);
+const [error, setError] = useState(null);
 
     const CriaLembrete = async () => {
         if (!nome || !data || new Date(data) <= new Date()) {
@@ -13,15 +15,19 @@ export default function Form({ fetchLembretes }) {
             return;
         }
 
-        try {
-            await criarLembrete(nome, data);
-            alert('Lembrete criado com sucesso!');
-            setNome('');
-            setData('');
-            fetchLembretes(); // Atualiza a lista de lembretes
-        } catch (error) {
-            alert(error.message);
-        }
+        setLoading(true);
+    setError(null);
+    try {
+        await registraLembrete(nome, data);
+        alert('Lembrete criado com sucesso!');
+        setNome('');
+        setData('');
+        fetchLembretes();
+    } catch (error) {
+        setError(error.message);
+    } finally {
+        setLoading(false);
+    }
     };
 
     return (
@@ -41,7 +47,10 @@ export default function Form({ fetchLembretes }) {
                 value={data}
                 onChange={(e) => setData(e.target.value)}
             />
-            <button id='create' onClick={CriaLembrete}>Criar</button>
+            <button onClick={CriaLembrete} disabled={loading}>
+            {loading ? 'Criando...' : 'Criar'}
+        </button>
+        {error && <p className="error">{error}</p>}
         </div>
     );
 }

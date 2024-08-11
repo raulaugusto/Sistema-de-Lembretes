@@ -1,6 +1,5 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import styles from './styles/App.module.scss'
 
 import Header from '../src/components/Header';
 import Form from '../src/components/Form';
@@ -27,10 +26,11 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <div className='formSide'>
-          <Form fetchLembretes={fetchLembretes} /> {/* Passa fetchLembretes como prop */}
+        <div className={styles.formSide}>
+          <Form fetchLembretes={fetchLembretes} />
         </div>
-        <div className='remindersSide'>
+        <div className={styles.reminderSide}>
+        <h2>Lista de Lembretes</h2>
           <ReminderList lembretes={lembretes} setLembretes={setLembretes} />
         </div>
       </main>

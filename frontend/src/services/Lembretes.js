@@ -3,12 +3,13 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/lembretes';
 
-export const criarLembrete = async (nome, data) => {
+export const registraLembrete = async (nome, data) => {
     try {
         const response = await axios.post(API_URL, { nome, data });
         return response.data;
     } catch (error) {
-        throw new Error('Erro ao criar lembrete: ' + error.message);
+        console.error('Erro ao criar lembrete: ' + error.message);
+        throw new Error(error.response?.data?.error || 'Erro desconhecido ao criar lembrete');
     }
 };
 

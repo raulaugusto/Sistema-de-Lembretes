@@ -1,0 +1,47 @@
+$removeButtonColor: red;
+$createButtonColor: #33B4C4;
+$createButtonHoverColor: #2055A6;
+$mainBackgroundColor: #282828;
+$headerColor: #1C1C1C;
+
+
+
+Header{
+  height: 10vh;
+  place-content: center;
+  color: white;
+  background-color: $headerColor;
+}
+
+main{
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  
+}
+
+.formSide button{
+  width: 270px;
+  height: 50px;
+  background-color: $createButtonColor;
+  transition: 0.25s;
+  border-style: none;
+  border-radius: 50px;
+
+    &:hover{
+      background-color: $createButtonHoverColor;
+    }
+
+}
+
+.reminderSide button{
+  margin-left: 5px;
+  color: white;
+  border: none;
+  background-color: $removeButtonColor;
+  border-radius: 25px;
+  height: 18px;
+  width: 18px;
+}

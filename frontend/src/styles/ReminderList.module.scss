@@ -1,10 +1,12 @@
-.box{
-    display:flex;
+.box {
+    display: flex;
     place-content: center;
     width: 700px;
-    height: 800px;
+    height: 700px;
     border: 2px solid black;
+    overflow-y: scroll;
 }
-.list{
+
+.list {
     width: 600px;
 }

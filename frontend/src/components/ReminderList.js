@@ -1,5 +1,5 @@
 import React from 'react';
-import './ReminderList.css';
+import styles from '../styles/ReminderList.module.scss'; // Importando o SCSS como módulo
 import { deletarLembrete } from '../services/Lembretes';
 
 export default function ReminderList({ lembretes = {}, setLembretes }) {
@@ -7,32 +7,32 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
 
     const RemoverLembrete = async (data, nome) => {
         try {
-            await deletarLembrete(data, nome); // Remove o lembrete do backend
+            await deletarLembrete(data, nome);
 
-            // Remove o lembrete do estado local
             const novosLembretes = { ...lembretes };
             novosLembretes[data] = novosLembretes[data].filter(item => item !== nome);
 
-            // Se o array de lembretes de uma data ficar vazio, remova a chave dessa data
             if (novosLembretes[data].length === 0) {
                 delete novosLembretes[data];
             }
 
-            setLembretes(novosLembretes); // Atualiza o estado com os lembretes restantes
+            setLembretes(novosLembretes);
         } catch (error) {
             console.error('Erro ao deletar lembrete:', error);
         }
     }
 
+    // Ordena as entradas dos lembretes por data
+    const sortedEntries = Object.entries(lembretes).sort(([dateA], [dateB]) => new Date(dateA) - new Date(dateB));
+
     return (
-        <div className="box">
-            <div>
-                <h2>Lista de Lembretes</h2>
-                <div className='list'>
+        <div className={styles.box}>
+            <div>              
+                <div className={styles.list}>
                     {isEmpty ? (
                         <p>Nenhum lembrete disponível.</p>
                     ) : (
-                        Object.entries(lembretes).map(([date, values]) => (
+                        sortedEntries.map(([date, values]) => (
                             <div key={date}>
                                 <strong>{date}:</strong>
                                 <ul>
@@ -40,7 +40,7 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
                                         <li key={index}>
                                             {value}
                                             <button onClick={() => RemoverLembrete(date, value)}>
-                                                Apagar
+                                                X
                                             </button>
                                         </li>
                                     ))}
