@@ -63,7 +63,12 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas em seu ambi
    Instale todas as dependências necessárias para o projeto:
 
    ```bash
-   cd DTI_teste
+   cd backend
+   npm install
+   cd ..
+   cd frontend
+   npm install
+   cd ..
    npm install
 
 3. **Execute o servidor de desenvolvimento**
