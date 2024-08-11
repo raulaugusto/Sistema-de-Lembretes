@@ -27,28 +27,32 @@ const Form = ({ fetchLembretes }) => {
 
   return (
     <form data-testid="form" onSubmit={handleSubmit}>
-      <div>
-        <h2>Novo Lembrete</h2>
-        <Input
-          htmlFor="nome"
-          id="nome"
-          label="Nome: "
-          type="text"
-          placeholder="Nome do Lembrete"
-          value={nome} // Adiciona o valor controlado
-          onChange={(e) => setNome(e.target.value)}
-        />
-        <Input
-          htmlFor="data"
-          id="data"
-          label="Data: "
-          type="date"
-          value={data} // Adiciona o valor controlado
-          onChange={(e) => setData(e.target.value)}
-        />
-      </div>
+      <fieldset>
+        <legend><h2>Novo Lembrete</h2></legend>
+        <div>
+          <Input
+            htmlFor="nome"
+            id="nome"
+            label="Nome: "
+            type="text"
+            placeholder="Nome do Lembrete"
+            value={nome} // Adiciona o valor controlado
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
+        <div>
+          <Input
+            htmlFor="data"
+            id="data"
+            label="Data: "
+            type="date"
+            value={data} // Adiciona o valor controlado
+            onChange={(e) => setData(e.target.value)}
+          />
+        </div>
       <button type="submit">Criar</button>
-      {erro && <p>{erro}</p>}
+      {erro && <p role="alert">{erro}</p>}
+      </fieldset>
     </form>
   );
 };

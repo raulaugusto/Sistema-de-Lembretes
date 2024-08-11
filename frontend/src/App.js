@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './styles/App.module.scss'
+import styles from './styles/App.module.scss';
 import Header from '../src/components/Header';
 import Form from '../src/components/Form';
 import ReminderList from './components/ReminderList';
@@ -25,13 +25,15 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <div className={styles.formSide}>
-          <Form fetchLembretes={fetchLembretes}/>
-        </div>
-        <div className={styles.reminderSide}>
-        <h2>Lista de Lembretes</h2>
+        <section className={styles.formSide}>
+          <Form fetchLembretes={fetchLembretes} />
+        </section>
+        <section className={styles.reminderSide}>
+          <fieldset>
+          <legend><h2>Lista de Lembretes</h2></legend>
           <ReminderList lembretes={lembretes} setLembretes={setLembretes} />
-        </div>
+          </fieldset>
+        </section>
       </main>
     </div>
   );

@@ -5,7 +5,7 @@ import { deletarLembrete } from '../services/Lembretes';
 export default function ReminderList({ lembretes = {}, setLembretes }) {
     const isEmpty = Object.keys(lembretes).length === 0;
 
-    const RemoverLembrete = async (data, nome) => {
+    const handleDeleteReminder = async (data, nome) => {
         try {
             await deletarLembrete(data, nome);
 
@@ -27,7 +27,7 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
 
     return (
         <div className={styles.box}>
-            <div>              
+            <div>
                 <div className={styles.list}>
                     {isEmpty ? (
                         <p>Nenhum lembrete disponível.</p>
@@ -36,10 +36,13 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
                             <div key={date}>
                                 <strong>{date}:</strong>
                                 <ul>
-                                    {values.map((value, index) => (
-                                        <li key={index}>
+                                    {values.map((value) => (
+                                        <li key={`${date}-${value}`}>
                                             {value}
-                                            <button onClick={() => RemoverLembrete(date, value)}>
+                                            <button 
+                                                onClick={() => handleDeleteReminder(date, value)}
+                                                aria-label={`Deletar lembrete ${value} na data ${date}`}
+                                            >
                                                 X
                                             </button>
                                         </li>
@@ -49,7 +52,7 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
                         ))
                     )}
                 </div>
-            </div>           
+            </div>
         </div>
     );
 }
