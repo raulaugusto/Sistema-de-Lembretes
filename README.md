@@ -39,3 +39,44 @@
 
 5. **Armazenamento e Persistência**:
    - Para simplificar o projeto, os dados são armazenados apenas em memória no backend. Essa abordagem é adequada para um protótipo, mas para um projeto em produção, um banco de dados seria necessário.
+
+# Instruções para Executar o Sistema
+
+## Pré-requisitos
+
+Certifique-se de que você tenha as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
+
+- **Node.js** (versão 14 ou superior)
+- **npm** (gerenciador de pacotes do Node.js)
+
+## Passos para Executar o Sistema
+
+1. **Clone o repositório**
+
+   Clone o repositório para o seu ambiente local usando o comando:
+
+   ```bash
+   git clone https://github.com/raulaugusto/DTI_teste.git
+
+2. **Instale as dependências**
+   
+   Instale todas as dependências necessárias para o projeto:
+
+   ```bash
+   cd DTI_teste
+   npm install
+
+3. **Execute o servidor de desenvolvimento**
+
+   Para iniciar o servidor de desenvolvimento e visualizar o projeto em seu navegador:
+
+   ```bash
+   npm start
+   ```
+   O backend será iniciado localmente na porta 5000.
+
+4. **Executar os testes**
+
+   ```bash
+   npm test
+   ```
