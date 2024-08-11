@@ -43,3 +43,13 @@ main{
   height: 18px;
   width: 18px;
 }
+
+@media only screen and (max-width: 1050px) {
+  main{
+    flex-direction: column;
+  }
+  .reminderSide #dateList {
+    padding-left: 170px;
+    margin-left: 170px;
+  }
+}

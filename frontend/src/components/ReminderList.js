@@ -26,14 +26,14 @@ export default function ReminderList({ lembretes = {}, setLembretes }) {
     const sortedEntries = Object.entries(lembretes).sort(([dateA], [dateB]) => new Date(dateA) - new Date(dateB));
 
     return (
-        <div className={styles.box}>
+        <div className={styles.box} id='dateList' >
             <div>
                 <div className={styles.list}>
                     {isEmpty ? (
                         <p>Nenhum lembrete disponível.</p>
                     ) : (
                         sortedEntries.map(([date, values]) => (
-                            <div key={date}>
+                            <div id='dateList' key={date}>
                                 <strong>{date}:</strong>
                                 <ul>
                                     {values.map((value) => (

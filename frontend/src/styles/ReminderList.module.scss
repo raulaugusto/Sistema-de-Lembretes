@@ -9,3 +9,17 @@
 .list {
     width: 600px;
 }
+@media only screen and (max-width: 740px){
+    .box{
+      width: 500px;
+    }
+}
+@media only screen and (max-width: 740px){
+    .box{
+      width: 300px;
+      padding-left: 170px;
+    }
+    p{
+        padding-left: 170px;
+    }
+}
