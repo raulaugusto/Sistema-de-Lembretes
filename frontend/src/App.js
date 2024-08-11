@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles/App.module.scss'
-
 import Header from '../src/components/Header';
 import Form from '../src/components/Form';
 import ReminderList from './components/ReminderList';
@@ -27,7 +26,7 @@ function App() {
       <Header />
       <main>
         <div className={styles.formSide}>
-          <Form fetchLembretes={fetchLembretes} />
+          <Form fetchLembretes={fetchLembretes}/>
         </div>
         <div className={styles.reminderSide}>
         <h2>Lista de Lembretes</h2>

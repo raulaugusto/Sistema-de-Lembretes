@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/ReminderList.module.scss'; // Importando o SCSS como módulo
+import styles from '../styles/ReminderList.module.scss';
 import { deletarLembrete } from '../services/Lembretes';
 
 export default function ReminderList({ lembretes = {}, setLembretes }) {

@@ -1,7 +1,6 @@
 $removeButtonColor: red;
 $createButtonColor: #33B4C4;
 $createButtonHoverColor: #2055A6;
-$mainBackgroundColor: #282828;
 $headerColor: #1C1C1C;
 
 
@@ -19,7 +18,6 @@ main{
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  
 }
 
 .formSide button{
